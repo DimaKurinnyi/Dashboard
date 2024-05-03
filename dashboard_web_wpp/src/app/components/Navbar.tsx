@@ -18,7 +18,7 @@ export const Navbar = () => {
             <li className="mb-7">Order</li>
             <li className="mb-7">Transactions</li>
             <li className="mb-7">Shipping</li>
-            <li className="">Product list</li>
+            <li className="">Product lis</li>
           </ul>
         </nav>
         <div className=" text-lg">
