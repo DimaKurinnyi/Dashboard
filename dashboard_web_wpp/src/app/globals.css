@@ -17,25 +17,27 @@ html {
 }
 body {
   display: flex;
-  background: rgb(2, 0, 36);
-  background: linear-gradient(
+  background: #010018;
+  /* background: linear-gradient(
     90deg,
     rgba(2, 0, 36, 1) 0%,
     rgba(0, 0, 17, 1) 0%,
     rgba(1, 6, 54, 1) 100%
-  );
+  ); */
   min-height: 100%;
   position: relative;
   line-height: 1.7;
   letter-spacing: 1.2px;
   color: aliceblue;
 }
+
 .content {
   position: relative;
   color: black;
   background: #fff;
   width: 100%;
   margin: 20px 20px 20px 0px;
+  padding: 0 48px;
   
   border-radius: 45px;
 }

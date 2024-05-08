@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}><Navbar/>{children}</body>
+      <body className='dark:text-black dark:bg-white duration-300 ease-in-out transition' ><Navbar/>{children}</body>
     </html>
   );
 }

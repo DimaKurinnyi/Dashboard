@@ -1,8 +1,11 @@
+import { Header } from './components';
+
 export default function Home() {
   return (
-    <main className=" content ">
+    <main className=" content dark:text-text-color dark:bg-bg-dark duration-1000 ease-in-out transition">
+      <Header tittle="Mean page" description="Lorem ipsum, dolor sit amet" />
       <div
-        className=" h-[95%] p-6  absolute overflow-scroll
+        className=" h-[90%] pr-12   absolute overflow-scroll
       ">
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sed corrupti quae, fugiat
