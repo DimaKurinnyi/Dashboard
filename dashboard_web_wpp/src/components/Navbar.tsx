@@ -31,13 +31,23 @@ export const Navbar = () => {
 
         <nav>
           <ul className=" *:py-3.5 *:px-2 *:rounded-lg">
-            <li className={`${openClose?'hover:bg-blue-700':'hover:border-r-4 hover:border-solid hover:border-blue-700 hover:rounded-none'} `}>
-              <Link className={`flex items-center ${openClose ? '' : 'justify-center'}`} href="#">
+            <li
+              className={`${
+                openClose
+                  ? 'hover:bg-blue-700 dark:hover:text-text-color'
+                  : 'hover:border-r-4 hover:border-solid hover:border-blue-700 hover:rounded-none'
+              } `}>
+              <Link className={`flex items-center ${openClose ? '' : 'justify-center'}`} href="/">
                 <TiHome size={25} style={openClose ? { marginRight: '10px' } : {}} />
                 {openClose && <p>Dashboard</p>}
               </Link>
             </li>
-            <li className={`${openClose?'hover:bg-blue-700':'hover:border-r-4 hover:border-solid hover:border-blue-700 hover:rounded-none'} `}>
+            <li
+              className={`${
+                openClose
+                  ? 'hover:bg-blue-700 dark:hover:text-text-color'
+                  : 'hover:border-r-4 hover:border-solid hover:border-blue-700 hover:rounded-none'
+              } `}>
               <Link className={`flex items-center ${openClose ? '' : 'justify-center'}`} href="#">
                 <TbBrandGoogleAnalytics
                   size={25}
@@ -46,26 +56,46 @@ export const Navbar = () => {
                 {openClose && <p>Analytics</p>}
               </Link>
             </li>
-            <li className={`${openClose?'hover:bg-blue-700':'hover:border-r-4 hover:border-solid hover:border-blue-700 hover:rounded-none'} `}>
+            <li
+              className={`${
+                openClose
+                  ? 'hover:bg-blue-700 dark:hover:text-text-color'
+                  : 'hover:border-r-4 hover:border-solid hover:border-blue-700 hover:rounded-none'
+              } `}>
               <Link className={`flex items-center ${openClose ? '' : 'justify-center'}`} href="#">
                 <HiOutlineShoppingBag size={25} style={openClose ? { marginRight: '10px' } : {}} />
                 {openClose && <p>Order</p>}
               </Link>
             </li>
-            <li className={`${openClose?'hover:bg-blue-700':'hover:border-r-4 hover:border-solid hover:border-blue-700 hover:rounded-none'} `}>
+            <li
+              className={`${
+                openClose
+                  ? 'hover:bg-blue-700 dark:hover:text-text-color'
+                  : 'hover:border-r-4 hover:border-solid hover:border-blue-700 hover:rounded-none'
+              } `}>
               <Link className={`flex items-center ${openClose ? '' : 'justify-center'}`} href="#">
                 <TbTransactionDollar size={25} style={openClose ? { marginRight: '10px' } : {}} />
                 {openClose && <p>Transactions</p>}
               </Link>
             </li>
-            <li className={`${openClose?'hover:bg-blue-700':'hover:border-r-4 hover:border-solid hover:border-blue-700 hover:rounded-none'} `}>
+            <li
+              className={`${
+                openClose
+                  ? 'hover:bg-blue-700 dark:hover:text-text-color'
+                  : 'hover:border-r-4 hover:border-solid hover:border-blue-700 hover:rounded-none'
+              } `}>
               <Link className={`flex items-center ${openClose ? '' : 'justify-center'}`} href="#">
                 <FaShippingFast size={25} style={openClose ? { marginRight: '10px' } : {}} />
                 {openClose && <p>Shipping</p>}
               </Link>
             </li>
-            <li className={`${openClose?'hover:bg-blue-700':'hover:border-r-4 hover:border-solid hover:border-blue-700 hover:rounded-none'} `}>
-              <Link className={`flex items-center ${openClose ? '' : 'justify-center'}`} href="#">
+            <li
+              className={`${
+                openClose
+                  ? 'hover:bg-blue-700 dark:hover:text-text-color'
+                  : 'hover:border-r-4 hover:border-solid hover:border-blue-700 hover:rounded-none'
+              } `}>
+              <Link className={`flex items-center ${openClose ? '' : 'justify-center'}`} href="/product">
                 <AiOutlineProduct size={25} style={openClose ? { marginRight: '10px' } : {}} />
                 {openClose && <p>Product list</p>}
               </Link>
@@ -74,7 +104,12 @@ export const Navbar = () => {
         </nav>
         <div className=" text-lg">
           <ul className=" *:py-3.5 *:px-2 *:rounded-lg">
-            <li className={`${openClose?'hover:bg-blue-700':'hover:border-r-4 hover:border-solid hover:border-blue-700 hover:rounded-none'} `}>
+            <li
+              className={`${
+                openClose
+                  ? 'hover:bg-blue-700 dark:hover:text-text-color'
+                  : 'hover:border-r-4 hover:border-solid hover:border-blue-700 hover:rounded-none'
+              } `}>
               <Link className={`flex items-center ${openClose ? '' : 'justify-center'}`} href="#">
                 <IoMdSettings size={25} style={openClose ? { marginRight: '10px' } : {}} />
                 {openClose && <p>Settings</p>}
@@ -83,7 +118,12 @@ export const Navbar = () => {
 
             <LightDarkSwitch isOpen={openClose} />
 
-            <li className={`${openClose?'hover:bg-blue-700':'hover:border-r-4 hover:border-solid hover:border-blue-700 hover:rounded-none'} `}>
+            <li
+              className={`${
+                openClose
+                  ? 'hover:bg-blue-700 dark:hover:text-text-color'
+                  : 'hover:border-r-4 hover:border-solid hover:border-blue-700 hover:rounded-none'
+              } `}>
               <Link className={`flex items-center ${openClose ? '' : 'justify-center'}`} href="#">
                 <IoLogOut size={25} style={openClose ? { marginRight: '10px' } : {}} />
                 {openClose && <p>Logout</p>}
