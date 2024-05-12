@@ -32,6 +32,7 @@ body {
 }
 
 .content {
+  overflow: hidden;
   position: relative;
   color: black;
   background: #fff;
@@ -40,4 +41,15 @@ body {
   padding: 0 48px 20px 48px;
   
   border-radius: 45px;
+}
+.imgDark {
+  display: none;
+}
+@media (prefers-color-scheme:dark){
+  .imgLight {
+    display: none;
+  }
+  .imgDark {
+    display: unset;
+  }
 }

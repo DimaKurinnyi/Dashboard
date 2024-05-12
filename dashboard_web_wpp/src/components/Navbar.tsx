@@ -10,6 +10,7 @@ import { IoMdSettings } from 'react-icons/io';
 import { IoLogOut } from 'react-icons/io5';
 import { TbBrandGoogleAnalytics, TbTransactionDollar } from 'react-icons/tb';
 import { TiHome } from 'react-icons/ti';
+import { LuLayoutDashboard } from "react-icons/lu";
 import { LightDarkSwitch } from './LightDarkSwitch';
 
 export const Navbar = () => {
@@ -21,9 +22,9 @@ export const Navbar = () => {
   return (
     <div
       className={`${
-        openClose ? 'w-[20%] ml-8' : 'w-auto'
+        openClose ? 'w-auto ml-4 pl-2' : 'w-auto'
       }    min-h-full flex items-center justify-end gap-2 duration-500 ease-in-out transition-all`}>
-      <div className=" flex flex-col justify-around h-[100%]">
+      <div className=" flex flex-col justify-around h-[100%] ">
         <Link href="/" className={`flex ${openClose ? ' items-center gap-4' : 'justify-center'}`}>
           <Image src="/dashdoard.png" width={60} height={60} alt=""></Image>
           {openClose && <h1 className=" text-2xl font-bold">Dashboard</h1>}
@@ -31,7 +32,7 @@ export const Navbar = () => {
 
         <nav>
           <ul className=" *:py-3.5 *:px-2 *:rounded-lg">
-            <li
+          <li
               className={`${
                 openClose
                   ? 'hover:bg-blue-700 dark:hover:text-text-color'
@@ -39,6 +40,17 @@ export const Navbar = () => {
               } `}>
               <Link className={`flex items-center ${openClose ? '' : 'justify-center'}`} href="/">
                 <TiHome size={25} style={openClose ? { marginRight: '10px' } : {}} />
+                {openClose && <p>Home</p>}
+              </Link>
+            </li>
+            <li
+              className={`${
+                openClose
+                  ? 'hover:bg-blue-700 dark:hover:text-text-color'
+                  : 'hover:border-r-4 hover:border-solid hover:border-blue-700 hover:rounded-none'
+              } `}>
+              <Link className={`flex items-center ${openClose ? '' : 'justify-center'}`} href="/dashboard">
+                <LuLayoutDashboard size={25} style={openClose ? { marginRight: '10px' } : {}} />
                 {openClose && <p>Dashboard</p>}
               </Link>
             </li>
@@ -67,17 +79,7 @@ export const Navbar = () => {
                 {openClose && <p>Order</p>}
               </Link>
             </li>
-            <li
-              className={`${
-                openClose
-                  ? 'hover:bg-blue-700 dark:hover:text-text-color'
-                  : 'hover:border-r-4 hover:border-solid hover:border-blue-700 hover:rounded-none'
-              } `}>
-              <Link className={`flex items-center ${openClose ? '' : 'justify-center'}`} href="#">
-                <TbTransactionDollar size={25} style={openClose ? { marginRight: '10px' } : {}} />
-                {openClose && <p>Transactions</p>}
-              </Link>
-            </li>
+            
             <li
               className={`${
                 openClose
