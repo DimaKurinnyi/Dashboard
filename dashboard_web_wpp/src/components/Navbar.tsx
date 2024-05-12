@@ -22,11 +22,11 @@ export const Navbar = () => {
   return (
     <div
       className={`${
-        openClose ? 'w-auto ml-4 pl-2' : 'w-auto'
+        openClose ? 'w-auto ml-4 ' : 'w-auto'
       }    min-h-full flex items-center justify-end gap-2 duration-500 ease-in-out transition-all`}>
       <div className=" flex flex-col justify-around h-[100%] ">
         <Link href="/" className={`flex ${openClose ? ' items-center gap-4' : 'justify-center'}`}>
-          <Image src="/dashdoard.png" width={60} height={60} alt=""></Image>
+          <Image src="/dashboard.png" width={60} height={60} alt=""></Image>
           {openClose && <h1 className=" text-2xl font-bold">Dashboard</h1>}
         </Link>
 
