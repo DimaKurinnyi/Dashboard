@@ -1,7 +1,11 @@
+'use client'
 import Image from 'next/image';
 import { IHeaderProps } from '../types';
+import { useSession } from 'next-auth/react';
 
 export const Header = ({ tittle, description }: IHeaderProps) => {
+  const {data:session,update} = useSession()
+  console.log(session)
   return (
     <div className="flex justify-between items-center pt-4 pb-2 ">
       <div className="">
@@ -14,8 +18,9 @@ export const Header = ({ tittle, description }: IHeaderProps) => {
         </div>
 
         <div className="ml-4 text-sm">
-          <p className=" font-semibold">Jak Djeferson</p>
-          <p className="">ARB zoo.</p>
+          <p className=" font-semibold">{session?.user?.name}</p>
+          <p className="">{session?.user?.company}</p>
+          <button onClick={()=>update({name:'Dim'})}>edit name</button>
         </div>
       </div>
     </div>

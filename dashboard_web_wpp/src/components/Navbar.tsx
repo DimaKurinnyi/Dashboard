@@ -2,19 +2,21 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { signOut, useSession } from 'next-auth/react';
 import { useState } from 'react';
 import { AiOutlineProduct } from 'react-icons/ai';
 import { FaShippingFast } from 'react-icons/fa';
 import { HiOutlineShoppingBag } from 'react-icons/hi2';
 import { IoMdSettings } from 'react-icons/io';
 import { IoLogOut } from 'react-icons/io5';
-import { TbBrandGoogleAnalytics, TbTransactionDollar } from 'react-icons/tb';
+import { LuLayoutDashboard } from 'react-icons/lu';
+import { TbBrandGoogleAnalytics } from 'react-icons/tb';
 import { TiHome } from 'react-icons/ti';
-import { LuLayoutDashboard } from "react-icons/lu";
 import { LightDarkSwitch } from './LightDarkSwitch';
 
 export const Navbar = () => {
   const [openClose, setOpenClose] = useState<boolean>(true);
+  const { status } = useSession();
 
   const handleClose = () => {
     setOpenClose(!openClose);
@@ -32,7 +34,7 @@ export const Navbar = () => {
 
         <nav>
           <ul className=" *:py-3.5 *:px-2 *:rounded-lg">
-          <li
+            <li
               className={`${
                 openClose
                   ? 'hover:bg-blue-700 dark:hover:text-text-color'
@@ -49,7 +51,9 @@ export const Navbar = () => {
                   ? 'hover:bg-blue-700 dark:hover:text-text-color'
                   : 'hover:border-r-4 hover:border-solid hover:border-blue-700 hover:rounded-none'
               } `}>
-              <Link className={`flex items-center ${openClose ? '' : 'justify-center'}`} href="/dashboard">
+              <Link
+                className={`flex items-center ${openClose ? '' : 'justify-center'}`}
+                href="/dashboard">
                 <LuLayoutDashboard size={25} style={openClose ? { marginRight: '10px' } : {}} />
                 {openClose && <p>Dashboard</p>}
               </Link>
@@ -79,14 +83,16 @@ export const Navbar = () => {
                 {openClose && <p>Order</p>}
               </Link>
             </li>
-            
+
             <li
               className={`${
                 openClose
                   ? 'hover:bg-blue-700 dark:hover:text-text-color'
                   : 'hover:border-r-4 hover:border-solid hover:border-blue-700 hover:rounded-none'
               } `}>
-              <Link className={`flex items-center ${openClose ? '' : 'justify-center'}`} href="#">
+              <Link
+                className={`flex items-center ${openClose ? '' : 'justify-center'}`}
+                href="/shipping">
                 <FaShippingFast size={25} style={openClose ? { marginRight: '10px' } : {}} />
                 {openClose && <p>Shipping</p>}
               </Link>
@@ -97,7 +103,9 @@ export const Navbar = () => {
                   ? 'hover:bg-blue-700 dark:hover:text-text-color'
                   : 'hover:border-r-4 hover:border-solid hover:border-blue-700 hover:rounded-none'
               } `}>
-              <Link className={`flex items-center ${openClose ? '' : 'justify-center'}`} href="/product">
+              <Link
+                className={`flex items-center ${openClose ? '' : 'justify-center'}`}
+                href="/product">
                 <AiOutlineProduct size={25} style={openClose ? { marginRight: '10px' } : {}} />
                 {openClose && <p>Product list</p>}
               </Link>
@@ -120,17 +128,20 @@ export const Navbar = () => {
 
             <LightDarkSwitch isOpen={openClose} />
 
-            <li
-              className={`${
-                openClose
-                  ? 'hover:bg-blue-700 dark:hover:text-text-color'
-                  : 'hover:border-r-4 hover:border-solid hover:border-blue-700 hover:rounded-none'
-              } `}>
-              <Link className={`flex items-center ${openClose ? '' : 'justify-center'}`} href="#">
-                <IoLogOut size={25} style={openClose ? { marginRight: '10px' } : {}} />
-                {openClose && <p>Logout</p>}
-              </Link>
-            </li>
+            {status === 'authenticated' && (
+              <li
+                onClick={() => signOut()}
+                className={`${
+                  openClose
+                    ? 'hover:bg-blue-700 dark:hover:text-text-color'
+                    : 'hover:border-r-4 hover:border-solid hover:border-blue-700 hover:rounded-none'
+                } `}>
+                <Link className={`flex items-center ${openClose ? '' : 'justify-center'}`} href="#">
+                  <IoLogOut size={25} style={openClose ? { marginRight: '10px' } : {}} />
+                  {openClose && <p>Logout</p>}
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       </div>

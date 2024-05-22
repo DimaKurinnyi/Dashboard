@@ -3,6 +3,6 @@ import React from 'react'
 
 export const Loader = () => {
   return (
-    <div className=' w-full h-full flex justify-center items-center'><Image  src='/load.gif' width={300} height={300} alt=''/></div>
+    <div className=' w-full h-full flex justify-center items-center'><Image unoptimized src='/load.gif' width={300} height={300} alt=''/></div>
   )
 }
