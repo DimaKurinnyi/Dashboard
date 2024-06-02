@@ -12,39 +12,52 @@ export const authOptions: NextAuthOptions = {
       credentials: { email: {}, password: {} },
       async authorize(credentials) {
         const email = credentials?.email;
-        try {
-          await connectMongoDB();
-          const user = await User.findOne({ email });
-          if (!user) {
-            return null;
-          }
-          const passwordMatch = await bcrypt.compare(credentials?.password || '', user.password);
-          if (!passwordMatch) {
-            return null;
-          }
-          return user;
-        } catch (e) {
-          console.log(e);
+        // try {
+        await connectMongoDB();
+        const user = await User.findOne({ email });
+        if (!user) {
+          throw new Error('Wrong email');
         }
+        const passwordMatch = await bcrypt.compare(credentials?.password || '', user.password);
+        if (!passwordMatch) {
+          throw new Error('Invalid Password');
+        }
+        return user;
+        // } catch (e:any) {
+        //   console.log(e.message);
+        // }
       },
     }),
   ],
   callbacks: {
     async jwt({ token, user, session, trigger }) {
       console.log('jwt callback', { token, user, session });
-      if (trigger === 'update' && session?.name) {
+      if (trigger === 'update' && session?.name && session?.company && session?.email && session?.Website && session?.phone) {
         token.name = session.name;
+        token.company = session.company;
+        token.email = session.email;
+        token.Website = session.Website;
+        token.phone = session.phone;
+        token.image = session.image;
+        await connectMongoDB();
+        const NewUser = await User.findById(token.id);
+        NewUser.name = token.name;
+        NewUser.company = token.company;
+        NewUser.email = token.email;
+        NewUser.Website = token.Website;
+        NewUser.phone = token.phone;
+        NewUser.image = token.image;
+        await NewUser.save();
       }
-      // await connectMongoDB();
-      // const NewUser = await User.findById(token.id);
-      // NewUser.name = token.name;
-      // await NewUser.save();
 
       if (user) {
         return {
           ...token,
           id: user.id,
           company: user.company,
+          phone: user.phone,
+          Website: user.Website,
+          image: user.image
         };
       }
 
@@ -58,6 +71,9 @@ export const authOptions: NextAuthOptions = {
           ...session.user,
           id: token.id,
           company: token.company,
+          phone: token.phone,
+          Website: token.Website,
+          image: token.image
         },
       };
     },
@@ -67,7 +83,7 @@ export const authOptions: NextAuthOptions = {
   },
   secret: process.env.NEXTAUTH_SECRET,
   pages: {
-    signIn: '/',
+    signIn: '/login',
   },
 };
 

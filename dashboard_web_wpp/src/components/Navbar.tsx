@@ -120,7 +120,7 @@ export const Navbar = () => {
                   ? 'hover:bg-blue-700 dark:hover:text-text-color'
                   : 'hover:border-r-4 hover:border-solid hover:border-blue-700 hover:rounded-none'
               } `}>
-              <Link className={`flex items-center ${openClose ? '' : 'justify-center'}`} href="#">
+              <Link className={`flex items-center ${openClose ? '' : 'justify-center'}`} href="/profile">
                 <IoMdSettings size={25} style={openClose ? { marginRight: '10px' } : {}} />
                 {openClose && <p>Settings</p>}
               </Link>

@@ -9,6 +9,7 @@ import { GoArrowRight, GoPeople } from 'react-icons/go';
 import { MdArrowCircleUp, MdOutlineWatchLater } from 'react-icons/md';
 
 export const LoginForm = () => {
+  const [pending, setPending] = useState<boolean>(false);
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [error, setError] = useState<string>('');
@@ -16,18 +17,22 @@ export const LoginForm = () => {
 
   const handlerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    setPending(true);
     try {
       const res = await signIn('credentials', {
         email,
         password,
+        callbackUrl: `${window.location.origin}`,
         redirect: false,
       });
       if (res?.error) {
-        setError('invalid Credentials');
+        setError(res?.error);
+        setPending(false);
+        console.log(res);
         return;
       }
-      router.push('/');
+      setPending(false);
+      return router.push('/');
     } catch (err) {
       console.log(err);
     }
@@ -75,9 +80,31 @@ export const LoginForm = () => {
             type="password"
             placeholder="password"
           />
-          <button className="hover:scale-105 duration-300 ease-in-out dark:bg-white dark:text-bg-dark text-text-color bg-bg-dark font-medium   p-1  rounded-xl">
-            Login
-          </button>
+          {!pending ? (
+            <button className="hover:scale-105 duration-300 ease-in-out dark:bg-white dark:text-bg-dark text-text-color bg-bg-dark font-medium   p-1  rounded-xl">
+              Login
+            </button>
+          ) : (
+            <div className="flex justify-center">
+              <svg
+                className=" animate-spin h-7 w-7 text-black  dark:text-white"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24">
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="4"></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+            </div>
+          )}
         </form>
 
         <div className=" text-sm">

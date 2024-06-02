@@ -13,5 +13,8 @@ declare module 'next-auth' {
 
   interface User{
     company: string;
+    phone:string;
+    Website: string;
+
   }
 }

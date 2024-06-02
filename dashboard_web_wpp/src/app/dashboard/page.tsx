@@ -1,30 +1,17 @@
-'use client';
 import { Chart, Header, RecentOrder } from '@/components';
-import { useSession } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { getServerSession } from 'next-auth';
+import { redirect } from 'next/navigation';
 import { BsFillBoxFill } from 'react-icons/bs';
 import { FiDollarSign } from 'react-icons/fi';
 import { IoIosPeople } from 'react-icons/io';
 import { MdShoppingCartCheckout } from 'react-icons/md';
+import { authOptions } from '../api/auth/[...nextauth]/route';
 
-const Dashboard = () => {
-  const [loading, setLoading] = useState(true);
-  const router = useRouter();
-  const { status } = useSession();
-  // if(status === 'loading'){
-  //   return <p>...Loading</p>
-  // }
+const Dashboard = async () => {
+  const session = await getServerSession(authOptions);
 
-  useEffect(() => {
-    if (status === 'unauthenticated') {
-      router?.push('/login');
-      setLoading(false);
-    }
-  }, [status, router]);
+  if (!session) redirect('/login');
 
-  console.log(loading);
-  if (loading) 
   return (
     <>
       <Header tittle="Mean page" description="Lorem ipsum, dolor sit amet" />

@@ -18,8 +18,20 @@ const userSchema = new Schema(
       type: 'string',
       required: false,
     },
+    image: {
+      type: 'string',
+      required: false,
+    },
+    phone: {
+      type: 'string',
+      required: false,
+    },
+    Website: {
+      type: 'string',
+      required: false,
+    },
   },
   { timestamps: true },
 );
-const User = models.User || mongoose.model('User',userSchema);
-export default User
+const User = models.User || mongoose.model('User', userSchema);
+export default User;

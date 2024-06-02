@@ -5,3 +5,7 @@ export { Navbar } from './Navbar';
 export { RecentOrder } from './RecentOrder';
 export {LoginForm } from './LoginForm';
 export { RegisterForm } from './RegisterForm';
+export {ProfileInfo} from './Profile/ProfileInfo';
+export {SettingsNavBar} from './Profile/SettingsNavBar';
+export {ProfileHeader} from './Profile/ProfileHeader';
+export {ProfileEdit} from './Profile/ProfileEdit';
